@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from "./components/header/Header";
 import PostCard from "./components/postCard/PostCard";
+import Post from './pages/post/Post';
 
 class App extends React.Component{
     constructor(props) {
@@ -30,9 +31,10 @@ class App extends React.Component{
             <>
                 <Header/>
                 <div className="container-center">
-                    {
-                        this.state.posts.map( item => <PostCard data={item} /> )
-                    }
+                    <Post />
+                    {/*{*/}
+                    {/*    this.state.posts.map( item => <PostCard data={item} /> )*/}
+                    {/*}*/}
                 </div>
             </>
         );
