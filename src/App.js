@@ -29,9 +29,11 @@ class App extends React.Component{
         return (
             <>
                 <Header/>
-                {
-                    this.state.posts.map( item => <PostCard data={item} /> )
-                }
+                <div className="container-center">
+                    {
+                        this.state.posts.map( item => <PostCard data={item} /> )
+                    }
+                </div>
             </>
         );
     }

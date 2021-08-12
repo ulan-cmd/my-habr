@@ -1,5 +1,5 @@
 import React from 'react';
-import './postCard.css';
+// import './postCard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp, faThumbsDown, faCommentAlt } from '@fortawesome/free-solid-svg-icons'
 
@@ -11,7 +11,7 @@ class PostCard extends React.Component {
 
     render() {
         return (
-            <div className="postcard-blocks">
+            <div className="postcard-container">
                 <div className="postcard">
                     <div className="postcard_authors">
                         <span className="create_name">Тестов Тест</span>

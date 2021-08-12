@@ -1,10 +1,7 @@
-.postcard-blocks {
+.postcard-container {
     display: flex;
-    justify-content: center;
-    margin: 10px 0px;
-}
-
-.postcard {
+    margin-bottom: 20px;
+    flex-wrap: wrap;
     width: 60%;
     background: #ffffff;
     color: rgb(0, 0, 0, 0.87);
@@ -34,7 +31,7 @@
     object-fit: cover;
 }
 
-.postcard_title {
+.postcard_title, .postcard_desc {
     margin: 20px 15px;
 }
 
