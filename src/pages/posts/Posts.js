@@ -28,7 +28,7 @@ class Posts extends React.Component {
         return (
             <>
                 {
-                    this.state.posts.map(item => <PostCard data={item}/>)
+                    this.state.posts.map(item => <PostCard key={item.id} data={item}/>)
                 }
             </>
         )

@@ -1,21 +1,48 @@
 import React from 'react';
 import styles from  './Post.module.css';
+import CommentForm from "../../components/commentForm/CommentForm";
 
 class Post extends React.Component{
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            postData:{}
+        }
+    }
+
+    componentDidMount() {
+        this.getPostsById();
+    }
+
+    getPostsById(){
+        const url = 'http://localhost:3001/posts/' + this.props.match.params.id;
+
+        fetch(url)
+            .then(response => {
+                if(response.ok){
+                    return response.json();
+                } else{
+                    alert('Ошибочка: Статус: ' + response.status);
+                }
+            })
+            .then(data => this.setState({ postData: data }))
+    }
+
 
     render(){
         return(
             <div className="postcard-container">
                 <div className="postcard-blocks">
                     <div className="postcard_authors">
-                        <span className={styles.create_name}>Тестов Тест</span>
+                        <span className={`${styles.create_name} ${styles.size_100}`}>Тестов Тест</span>
                         <span className="create_date">31.07.2021 19:59</span>
                     </div>
                     <div className="postcard_img">
-                        <img className="postcard__img" src="https://picsum.photos/1200/200" alt=""/>
+                        <img className="postcard__img" src={this.state.postData.image} alt=""/>
                     </div>
                     <div className="postcard_title">
-                        <h1 style={ {color:'red', marginBottom:'100px'} }>JPEG, который можно посмотреть в блокноте</h1>
+                        <h1 style={ {color:'red', marginBottom:'100px'} }>{this.state.postData.title}</h1>
                     </div>
                     <div className="postcard_desc">
                         <p>
@@ -34,23 +61,7 @@ class Post extends React.Component{
                     </div>
                 </div>
 
-                <div className="comments-blocks">
-                    <h2 className="comments-blocks__title">Комментарии <span
-                        className="comments-blocks__counter">5</span></h2>
-                    <div className="comments-blocks__form">
-                        <div className="form-control">
-                            <label htmlFor="">Имя</label>
-                            <input type="text"/>
-                        </div>
-                        <div className="form-control">
-                            <label htmlFor="">Сообщение</label>
-                            <textarea name="" id="" cols="30" rows="10"></textarea>
-                        </div>
-                        <div className="form-control">
-                            <button>Отправить</button>
-                        </div>
-                    </div>
-                </div>
+               <CommentForm/>
             </div>
         )
     }
